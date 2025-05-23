@@ -1,34 +1,31 @@
 /// <reference types="cypress"/>
 
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import AppointmentPage from "../pages/AppointmentPage";
+import HomePage from "../pages/HomePage"; // Import HomePage object
+import LoginPage from "../pages/LoginPage"; // Import LoginPage object
+import AppointmentPage from "../pages/AppointmentPage"; // Import AppointmentPage object
 
 describe('Cura Health First Test Suite', () => {
-    const homePage = new HomePage();
-    const loginPage = new LoginPage();
-    const appointmentPage = new AppointmentPage();
+    const homePage = new HomePage(); // Instantiate HomePage
+    const loginPage = new LoginPage(); // Instantiate LoginPage
+    const appointmentPage = new AppointmentPage(); // Instantiate AppointmentPage
 
     it('Make Appointment Test', () => {
-        // Home Page
-        homePage.visit();
-        homePage.clickMakeAppointment();
+        homePage.visit(); // Visit the Cura Health home page
+        homePage.clickMakeAppointment(); // Click the "Make Appointment" button
 
-        // Login Page
-        loginPage.enterUsername('John Doe');
-        loginPage.enterPassword('ThisIsNotAPassword');
-        loginPage.clickLogin();
+        loginPage.enterUsername('John Doe'); // Enter username
+        loginPage.enterPassword('ThisIsNotAPassword'); // Enter password
+        loginPage.clickLogin(); // Click the login button
 
-        // Appointment Page
-        appointmentPage.selectFacility('Seoul CURA Healthcare Center');
-        appointmentPage.checkHospitalReadmission();
-        appointmentPage.selectMedicaid();
-        appointmentPage.openDatePicker();
-        appointmentPage.selectYear();
-        appointmentPage.selectMonth();
-        appointmentPage.selectDay();
-        appointmentPage.clickVisitDate();
-        appointmentPage.enterComment('Automated test comment');
-        appointmentPage.bookAppointment();
+        appointmentPage.selectFacility('Seoul CURA Healthcare Center'); // Select facility
+        appointmentPage.checkHospitalReadmission(); // Check hospital readmission
+        appointmentPage.selectMedicaid(); // Select Medicaid as healthcare program
+        appointmentPage.openDatePicker(); // Open the date picker
+        appointmentPage.selectYear(); // Select year in date picker
+        appointmentPage.selectMonth(); // Select month in date picker
+        appointmentPage.selectDay(); // Select day in date picker
+        appointmentPage.clickVisitDate(); // Click visit date field to confirm
+        appointmentPage.enterComment('Automated test comment'); // Enter comment
+        appointmentPage.bookAppointment(); // Submit the appointment booking form
     });
 });
