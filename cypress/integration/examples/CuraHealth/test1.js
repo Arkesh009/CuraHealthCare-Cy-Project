@@ -1,8 +1,8 @@
 /// <reference types="cypress"/>
 
-import HomePage from "../pages/HomePage"; // Import HomePage object
-import LoginPage from "../pages/LoginPage"; // Import LoginPage object
-import AppointmentPage from "../pages/AppointmentPage"; // Import AppointmentPage object
+import HomePage from "../../../support/pages/HomePage";
+import LoginPage from "../../../support/pages/LoginPage";
+import AppointmentPage from "../../../support/pages/AppointmentPage";
 
 describe('Cura Health First Test Suite', () => {
     const homePage = new HomePage(); // Instantiate HomePage
