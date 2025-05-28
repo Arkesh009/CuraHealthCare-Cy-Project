@@ -6,6 +6,7 @@ const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
 const ExcelJs = require("exceljs");
 const { error } = require("console");
+const mochawesome = require('cypress-mochawesome-reporter/plugin');
 
 async function setupNodeEvents(on, config) {
   await addCucumberPreprocessorPlugin(on, config);
@@ -44,6 +45,8 @@ async function setupNodeEvents(on, config) {
     }
   })
 
+  mochawesome(on); // <-- This enables mochawesome reporter hooks
+
   // Make sure to return the config object as it might have been modified by the plugin.
   return config;
 }
@@ -68,13 +71,6 @@ module.exports = defineConfig({
   env: {
     url: "https://katalon-demo-cura.herokuapp.com",
   },
-  reporter: "cypress-mochawesome-reporter",
-  reporterOptions: {
-    reportDir: "cypress/reports/html",
-    overwrite: true,
-    html: true,
-    json: false
-  },
 
   retries: {
     runMode: 1,
@@ -86,4 +82,11 @@ module.exports = defineConfig({
     experimentalStudio: true,
     specPattern: ['cypress/integration/examples/CuraHealth/*.js', 'cypress/integration/examples/BDD/*.feature']
   },
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports/html',
+    overwrite: true,
+    html: true,
+    json: false
+  }
 });
