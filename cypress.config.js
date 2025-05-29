@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 const browserify = require("@cypress/browserify-preprocessor");
-const {addCucumberPreprocessorPlugin,} = require("@badeball/cypress-cucumber-preprocessor");
-const {preprendTransformerToOptions,} = require("@badeball/cypress-cucumber-preprocessor/browserify");
+const { addCucumberPreprocessorPlugin, } = require("@badeball/cypress-cucumber-preprocessor");
+const { preprendTransformerToOptions, } = require("@badeball/cypress-cucumber-preprocessor/browserify");
 const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
 const ExcelJs = require("exceljs");
@@ -38,9 +38,9 @@ async function setupNodeEvents(on, config) {
       const cell = worksheet.getCell(output.row, output.column + change.colChange);
       cell.value = replaceText;
       return workbook.xlsx.writeFile(filePath).then(() => {
-          return true;
+        return true;
       }).catch((error) => {
-          return false;
+        return false;
       })
     }
   })
@@ -52,19 +52,19 @@ async function setupNodeEvents(on, config) {
 }
 
 async function readExcelTest(worksheet, searchText) {
-    let output = { row: -1, column: -1 };
-    worksheet.eachRow((row, rownumber) => {
-      row.eachCell((cell, colNumber) => {
-        if (cell.value === searchText) {
-          output.row = rownumber;
-          output.column = colNumber;
-        }
-      });
+  let output = { row: -1, column: -1 };
+  worksheet.eachRow((row, rownumber) => {
+    row.eachCell((cell, colNumber) => {
+      if (cell.value === searchText) {
+        output.row = rownumber;
+        output.column = colNumber;
+      }
     });
-    return output;
-  }
+  });
+  return output;
+}
 
-  
+
 module.exports = defineConfig({
   defaultCommandTimeout: 6000,
 
