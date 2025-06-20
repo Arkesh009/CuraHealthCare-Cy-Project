@@ -25,3 +25,4 @@ Thumbs.db
 
 # Ignore Cypress and Mochawesome reports
 reports/
+cypress/cucumberReports/

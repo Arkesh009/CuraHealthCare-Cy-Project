@@ -68,7 +68,13 @@ module.exports = defineConfig({
   env: {
     url: "https://katalon-demo-cura.herokuapp.com",
   },
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    reportDir: "cypress/reports/html",
+    overwrite: true,
+    html: true,
+    json: false
+  },
 
   retries: {
     runMode: 1,
